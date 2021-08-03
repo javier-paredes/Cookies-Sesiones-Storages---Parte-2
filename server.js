@@ -35,7 +35,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 6000
+        maxAge: 600000
     }
 }))
 
@@ -66,11 +66,9 @@ app.use('/api/mensajes', routerMensajes);
 // SESSION LOGIN 
 
 app.get('/login', (req, res) => {
-    if (!req.session.user) { 
-        console.log(req.session.user)       
+    if (!req.session.user) {      
         res.render('vista', { showLogin: true, showContent: false, showBienvenida: false });
     } else {
-        console.log(req.session.user)
         res.render('vista', { showLogin: false, showContent: true, bienvenida: req.session.user, showBienvenida: true });
     }
 
